@@ -24,5 +24,5 @@ script: "./gradlew clean build"
 notifications:
   email:
     recipients:
-      - 본인 메일 주소
+      - z7942s@naver.com
 # Travis CI 실행 완료 시 자동으로 알람이 가도록 설정
