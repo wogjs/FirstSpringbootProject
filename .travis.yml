@@ -25,7 +25,7 @@ script: "./gradlew clean build"
 
 #CodeDeploy는 jar파일은 인식하지 못함 jar+기타 설정 파일들을 모아 압축
 before_deploy:
-  - zip -r myFirstProjecy  # 현재 위치의 모든 파일을 이 이름으로 압축 명령어의 마지막 위치는 본인의 프로젝트 이름이어야 함
+  - zip -r myFirstProjecy *  # 현재 위치의 모든 파일을 이 이름으로 압축 # 명령어의 마지막 위치는 본인의 프로젝트 이름이어야 함
   - mkdir -p deploy        # deploy라는 디렉토리를 Travis CI가 실행 중인 위치에서 생성
   - mv myFirstProjecy.zip deploy/myFirstProjecy.zip # myFirstProjecy.zip파일을 deploy/myFirstProjecy.zip으로 이동
 
