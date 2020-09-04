@@ -23,6 +23,24 @@ script: "./gradlew clean build"
 # master 브랜치에 푸시되었을 때 수횅하는 명령어
 # 프로젝트 내부에 둔 gradlew을 통해 clean & build를 수행
 
+#CodeDeploy는 jar파일은 인식하지 못함 jar+기타 설정 파일들을 모아 압축
+before_deploy:
+  - zip -r myFirstProjecy  # 현재 위치의 모든 파일을 이 이름으로 압축 명령어의 마지막 위치는 본인의 프로젝트 이름이어야 함
+  - mkdir -p deploy        # deploy라는 디렉토리를 Travis CI가 실행 중인 위치에서 생성
+  - mv myFirstProjecy.zip deploy/myFirstProjecy.zip # myFirstProjecy.zip파일을 deploy/myFirstProjecy.zip으로 이동
+
+# S3로 파일 업로드 혹은 CodeDeploy로 배포 등 외부 서비스와 연동될 행위들을 선언
+deploy:
+  - provider: s3
+    access_key_id: AKIA2JKNZCZMIEMHHQ5S
+    secret_access_key: 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
+    bucket: springboot-sns-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private # zip 파일접근을 private 방식으로
+    local_dir: deploy # before-deploy에서 생성한 디렉토리  # 앞에서 생성한 deploy 디렉토리를 지정 해당 위치의 파일들만 S3로 전송
+    wait-untill-deployed: true
+
 #CI 실행 완료시 메일로 알람
 notifications:
   email:
