@@ -41,6 +41,17 @@ deploy:
     local_dir: deploy # before-deploy에서 생성한 디렉토리  # 앞에서 생성한 deploy 디렉토리를 지정 해당 위치의 파일들만 S3로 전송
     wait-untill-deployed: true
 
+  - provider: codedeploy
+    access_key_id: AKIA2JKNZCZMIEMHHQ5S
+    secret_access_key: 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
+    bucket: springboot-sns-build    # S3 버킷
+    key: myFirstProjecy.zip         # 빌드 파일을 압축해서 전달
+    bundle_type: zip                # 압축 확장자
+    application: springboot-sns-webservice-group      # 웹콘솔에서 등록한 CodeDeploy 애플리케이션
+    deployment_group: springboot-sns-webservice-group # 웹콘솔에서 등록한 CodeDeploy 애플리케이션
+    region: ap-northeat-2
+    wait-until-deployed: true
+
 #CI 실행 완료시 메일로 알람
 notifications:
   email:
