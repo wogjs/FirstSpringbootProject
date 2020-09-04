@@ -8,6 +8,9 @@ branches:
 # Travis CI를 어느 브렌치가 푸시될때 수행할지 지정
 # 현재 옵션은 오직 master 브랜치에 push될 때만 수행
 
+before_install:
+  - chmod +x gradlew
+
 # Travis CI 서버의 home
 cache:
   directories:
