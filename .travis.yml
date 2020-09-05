@@ -49,7 +49,7 @@ deploy:
     bundle_type: zip                # 압축 확장자
     application: springboot-sns-webservice-group      # 웹콘솔에서 등록한 CodeDeploy 애플리케이션
     deployment_group: springboot-sns-webservice-group # 웹콘솔에서 등록한 CodeDeploy 애플리케이션
-    region: ap-northeat-2
+    region: ap-northeast-2
     wait-until-deployed: true
 
 #CI 실행 완료시 메일로 알람
