@@ -40,8 +40,8 @@ before_deploy:
 # S3로 파일 업로드 혹은 CodeDeploy로 배포 등 외부 서비스와 연동될 행위들을 선언
 deploy:
   - provider: s3
-    access_key_id: AKIA2JKNZCZMIEMHHQ5S
-    secret_access_key: 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
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
     bucket: springboot-sns-build
     region: ap-northeast-2
     skip_cleanup: true
@@ -50,8 +50,8 @@ deploy:
     wait-until-deployed: true
 
   - provider: codedeploy
-    access_key_id: AKIA2JKNZCZMIEMHHQ5S
-    secret_access_key: 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
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
     bucket: springboot-sns-build    # S3 버킷
     key: myFirstProjecy.zip         # 빌드 파일을 압축해서 전달
     bundle_type: zip                # 압축 확장자
