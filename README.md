@@ -14,10 +14,13 @@ Spring boot, JPA, Mustache 개인공부
     + MariaDB
 * ORM Framework
     + JPA
-* AWS
+* AWS 클라우드
     + EC2
     + RDS
     + S3
     + CodeDeploy
     + Route53
+* 소셜 로그인
+    + Naver
+    + Google
 * Travis CI
